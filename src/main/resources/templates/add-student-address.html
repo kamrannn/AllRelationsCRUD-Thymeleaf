@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Product</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: ghostwhite;">
+<div class="topnav">
+    <a class="active" th:href="@{/}">Home</a>
+    <a th:href="@{/add/student}">Add Student</a>
+</div>
+<div>
+    <div class="jumbotron jumbotron-fluid" style="background-color: ghostwhite">
+        <div class="container">
+            <h1 style="text-align: center; font-family: fantasy;font-size: 30px !important;margin-top: -20px;">Enter the
+                Student details</h1>
+            <hr>
+            <form th:action="@{/add/student/address}" method="post"
+                  class="form">
+                <div class="form-group">
+                    <label for="address1">Address#1</label>
+                    <input class="form-control" type="text" th:name="address1" id="address1"
+                           placeholder="Enter the third address"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="address1">Address#2</label>
+                    <input class="form-control" type="text" th:name="address2" id="address2"
+                           placeholder="Enter the second address"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="address1">Address#3</label>
+                    <input class="form-control" type="text" th:name="address3" id="address3"
+                           placeholder="Enter the third address"
+                    >
+                </div>
+                <input type="submit" class="btn btn-success col-4">
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
