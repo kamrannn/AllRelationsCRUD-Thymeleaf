@@ -11,10 +11,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: ghostwhite;">
-<div class="topnav">
-    <a class="active" th:href="@{/}">Home</a>
-    <a th:href="@{/course/create}">Add Course</a>
-</div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}" style="font-family: fantasy;font-weight: 400;font-size: x-large;">Springboot
+                Application</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/course/create}">Add New Course</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span>
+                    Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div>
     <div class="jumbotron jumbotron-fluid" style="background-color: ghostwhite">
         <div class="container">
@@ -50,6 +69,10 @@
 
                 <input type="submit" class="btn btn-success col-4">
             </form>
+        </div>
+        <hr>
+        <div class="container">
+            <a th:href="@{/}" class="btn btn-warning">Cancel Update</a>
         </div>
     </div>
 

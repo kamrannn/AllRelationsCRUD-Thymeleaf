@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class Course {
     private Integer id;
 
     @Column(name = "course_name")
+    @NotBlank(message = "Course name shouldn't be blanked")
     private String courseName;
 
     private int totalCreditHours;

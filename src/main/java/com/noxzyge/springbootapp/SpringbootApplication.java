@@ -1,11 +1,16 @@
 package com.noxzyge.springbootapp;
 
+import com.noxzyge.springbootapp.model.Admin;
 import com.noxzyge.springbootapp.model.Course;
+import com.noxzyge.springbootapp.repository.AdminRepository;
 import com.noxzyge.springbootapp.repository.CourseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.Optional;
 
 @SpringBootApplication
 public class SpringbootApplication {
@@ -15,7 +20,7 @@ public class SpringbootApplication {
     }
 
     @Bean
-    CommandLineRunner run(CourseRepository courseRepository) {
+    CommandLineRunner run(CourseRepository courseRepository, AdminRepository adminRepository, BCryptPasswordEncoder encoder) {
         return args -> {
 
             Course course1 = new Course();
@@ -35,6 +40,19 @@ public class SpringbootApplication {
             course3.setCourseName("Nuclear Physics");
             course3.setTotalCreditHours(5);
             courseRepository.save(course3);
+
+
+            Optional<Admin> admin = adminRepository.findByUsername("admin");
+            if (!admin.isPresent()) {
+                Admin newAdmin = new Admin();
+                newAdmin.setFirstName("Super");
+                newAdmin.setLastName("Admin");
+                newAdmin.setEmail("admin@gmail.com");
+                newAdmin.setUsername("admin");
+                newAdmin.setPassword(encoder.encode("password"));
+                newAdmin.setAge(30);
+                adminRepository.save(newAdmin);
+            }
         };
     }
 }
